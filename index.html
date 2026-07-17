@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inveo 2030 — Strateji Memorandumu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#ffffff;--navy:#0b1d43;--bg2:#0b1d43;--card:#ffffff;--card2:#f6f8fc;--line:#e3e9f4;--txt:#122644;--mut:#5b6b84;--acc:#0055FF;--accD:#0041c4;--amb:#c98a00;--accSoft:rgba(0,85,255,.07)}
+html{scroll-behavior:smooth}
+body{overflow-x:clip;background:var(--bg);color:var(--txt);font-family:'Poppins',sans-serif;line-height:1.65;font-size:16px}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;line-height:1.25;text-wrap:balance}
+a{color:var(--acc);text-decoration:none}a:hover{color:#3d78ff}
+p{text-wrap:pretty}
+.wrap{display:flex;min-height:100vh}
+#pbar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#0055FF,#3d78ff);width:0%;z-index:99;transition:width .15s}
+nav#side{position:fixed;top:0;left:0;bottom:0;width:250px;background:var(--bg2);border-right:1px solid rgba(255,255,255,.08);padding:24px 14px;overflow-y:auto;z-index:50;display:flex;flex-direction:column;gap:2px}
+nav#side .logo{padding:6px 10px 20px;display:flex;align-items:center;gap:10px}
+nav#side .logo img{height:20px;width:auto}
+nav#side .logo span{font-size:10px;letter-spacing:.14em;color:#96a7c8;font-weight:700;text-transform:uppercase}
+nav#side a.nv{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;color:#96a7c8;font-size:13px;font-weight:600;transition:all .15s}
+nav#side a.nv svg{width:15px;height:15px;flex-shrink:0}
+nav#side a.nv:hover{color:#fff;background:rgba(255,255,255,.06)}
+nav#side a.nv.on{color:#fff;background:rgba(0,85,255,.45)}
+nav#side .grp{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6478a3;font-weight:800;padding:16px 10px 4px}
+main{margin-left:250px;flex:1;min-width:0}
+section.sec{max-width:1020px;margin:0 auto;padding:72px 40px 24px;scroll-margin-top:20px}
+.kicker{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.kicker .num{font-family:'Poppins';font-size:12px;font-weight:800;color:var(--acc);background:var(--accSoft);border:1px solid rgba(0,85,255,.25);padding:3px 10px;border-radius:99px}
+.kicker .lbl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);font-weight:800}
+section.sec>h2{font-size:30px;font-weight:700;margin-bottom:12px}
+.lead{color:var(--mut);font-size:16.5px;max-width:760px;margin-bottom:28px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 2px 10px rgba(11,29,67,.05)}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.ic{width:38px;height:38px;border-radius:10px;background:var(--accSoft);border:1px solid rgba(0,85,255,.2);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.ic svg{width:18px;height:18px;color:var(--acc)}
+.ic.a{background:rgba(201,138,0,.1);border-color:rgba(201,138,0,.25)}.ic.a svg{color:var(--amb)}
+.card h3{font-size:16px;font-weight:600;margin-bottom:6px}
+.card p{font-size:14px;color:var(--mut)}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.stat .v{font-family:'Poppins';font-size:30px;font-weight:800;color:var(--acc);letter-spacing:-.02em}
+.stat .v small{font-size:15px;font-weight:700;color:var(--mut)}
+.stat .l{font-size:12.5px;color:var(--mut);font-weight:600;margin-top:4px}
+.callout{border:1px solid rgba(201,138,0,.3);background:linear-gradient(135deg,rgba(201,138,0,.07),transparent 60%);border-radius:14px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;margin-top:14px}
+.callout svg{width:20px;height:20px;color:var(--amb);flex-shrink:0;margin-top:2px}
+.callout h4{font-size:14px;color:var(--amb);margin-bottom:4px}
+.callout p{font-size:14px;color:var(--mut)}
+.callout.t{border-color:rgba(0,85,255,.3);background:linear-gradient(135deg,rgba(0,85,255,.05),transparent 60%)}
+.callout.t svg,.callout.t h4{color:var(--acc)}
+.acc-item{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.acc-item+.acc-item{margin-top:10px}
+.acc-hd{display:flex;align-items:center;gap:14px;padding:16px 20px;cursor:pointer;user-select:none;transition:background .15s}
+.acc-hd:hover{background:rgba(0,85,255,.03)}
+.acc-hd .t{flex:1;font-weight:700;font-size:14.5px;font-family:'Poppins'}
+.acc-hd .chev{transition:transform .25s;color:var(--mut)}
+.acc-hd .chev svg{width:16px;height:16px;display:block}
+.acc-item.open .chev{transform:rotate(180deg)}
+.acc-bd{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.acc-bd-in{padding:0 20px 18px;font-size:14px;color:var(--mut)}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--accSoft);color:var(--acc);border:1px solid rgba(0,85,255,.2)}
+.tag.a{background:rgba(201,138,0,.1);color:var(--amb);border-color:rgba(201,138,0,.25)}
+.tag.g{background:rgba(148,163,184,.1);color:var(--mut);border-color:var(--line)}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.tbl th{text-align:left;font-family:'Poppins';font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5a6b85;padding:10px 14px;border-bottom:1px solid var(--line)}
+.tbl td{padding:12px 14px;border-bottom:1px solid #edf1f8;color:var(--mut);vertical-align:top}
+.tbl td:first-child{color:var(--txt);font-weight:700}
+.tbl tr:last-child td{border-bottom:none}
+.steps{display:flex;gap:0;margin:20px 0 14px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card2)}
+.steps button{flex:1;padding:13px 8px;background:none;border:none;border-right:1px solid var(--line);color:var(--mut);font-family:'Poppins';font-size:12.5px;font-weight:700;cursor:pointer;transition:all .15s}
+.steps button:last-child{border-right:none}
+.steps button:hover{color:var(--txt)}
+.steps button.on{background:var(--acc);color:#fff}
+.step-panel{display:none}.step-panel.on{display:block;animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.flowrow{display:flex;align-items:stretch;gap:10px}
+.flowrow .fstep{flex:1;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.flowrow .fstep .n{font-family:'Poppins';font-size:11px;font-weight:800;color:var(--acc);margin-bottom:6px}
+.flowrow .fstep h4{font-size:13.5px;margin-bottom:4px}
+.flowrow .fstep p{font-size:12.5px;color:var(--mut)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+.reveal.vis{opacity:1;transform:none}
+.formula{background:var(--card2);border:1px dashed var(--line);border-radius:12px;padding:16px 20px;font-size:13.5px;color:var(--mut);margin-top:14px}
+.formula b{color:var(--acc);font-family:'Poppins';font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:6px}
+.hero{background:var(--navy);color:#fff;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:60px max(40px,calc((100% - 940px)/2));position:relative;overflow:hidden}
+.hero .glow{position:absolute;top:10%;right:-10%;width:520px;height:520px;background:radial-gradient(circle,rgba(0,85,255,.10),transparent 65%);pointer-events:none}
+.hero img.hlogo{height:34px;width:auto;align-self:flex-start;margin-bottom:36px}
+.hero h1{font-size:clamp(36px,5.5vw,60px);font-weight:800;letter-spacing:-.02em;max-width:820px}
+.hero h1 em{font-style:normal;color:#66a3ff}
+.hero .sub{font-size:18px;color:#b9c6e0;max-width:680px;margin:20px 0 34px}
+.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:820px}
+.meta .m{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:14px 16px}
+.meta .m .k{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#8fa3ce;font-weight:800;margin-bottom:4px}
+.meta .m .v{font-size:13.5px;font-weight:700}.hero .tag{background:rgba(0,85,255,.4);color:#cfe0ff;border-color:rgba(102,163,255,.5)}
+.scrolldn{margin-top:44px;display:inline-flex;align-items:center;gap:10px;background:var(--acc);color:#fff;font-size:13px;font-weight:600;padding:14px 28px;border-radius:4px;letter-spacing:.02em;transition:background .2s}.scrolldn:hover{background:var(--accD);color:#fff}
+.scrolldn svg{width:16px;height:16px;animation:bob 1.8s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #edf1f8;font-size:14px;color:var(--mut)}
+.li:last-child{border-bottom:none}
+.li svg{width:16px;height:16px;color:var(--acc);flex-shrink:0;margin-top:3px}
+.li.x svg{color:#e03131}
+.src{font-size:12px;color:#5a6b85;margin-top:18px;display:flex;gap:8px;align-items:flex-start}
+.src svg{width:13px;height:13px;flex-shrink:0;margin-top:3px}
+footer{background:var(--navy);margin-top:60px;padding:40px;text-align:center;color:#96a7c8;font-size:13px}
+footer img{height:18px;opacity:.9;margin-bottom:12px}
+#topnav{display:none}
+@media(max-width:1023px){
+nav#side{display:none}
+main{margin-left:0}
+#topnav{display:flex;position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);overflow-x:auto;gap:4px;padding:10px 14px;-webkit-overflow-scrolling:touch}
+#topnav a{flex-shrink:0;font-size:12px;font-weight:700;color:var(--mut);padding:6px 12px;border-radius:99px;border:1px solid var(--line);white-space:nowrap}
+#topnav a.on{color:var(--acc);border-color:rgba(0,85,255,.4);background:var(--accSoft)}
+section.sec{padding:48px 20px 16px}
+.g2,.g3,.g4{grid-template-columns:1fr}
+.meta{grid-template-columns:1fr}
+.flowrow{flex-direction:column}
+.steps{flex-wrap:wrap}
+.steps button{min-width:45%}
+.hero{padding:48px 20px}
+.tblwrap{overflow-x:auto}
+}
+@media(min-width:1024px){.tblwrap{overflow:visible}}
+</style>
+</head>
+<body>
+<div id="pbar"></div>
+<nav id="side">
+<div class="logo"><img src="assets/inveo-logo.svg" alt="Inveo"><span>2030</span></div>
+<a class="nv" href="#giris"><i data-lucide="home"></i>Giriş</a>
+<div class="grp">Değerlendirme</div>
+<a class="nv" href="#ozet"><i data-lucide="file-text"></i>Yönetici Özeti</a>
+<a class="nv" href="#mimari"><i data-lucide="network"></i>Stratejik Mimari</a>
+<a class="nv" href="#global"><i data-lucide="globe"></i>Yurt Dışı Dersleri</a>
+<div class="grp">Öncelikler</div>
+<a class="nv" href="#anabahis"><i data-lucide="target"></i>Ana Bahis: Platform</a>
+<a class="nv" href="#pazar"><i data-lucide="route"></i>Pazara Çıkış</a>
+<a class="nv" href="#odunc"><i data-lucide="repeat"></i>Otomatik Pay Ödünç</a>
+<a class="nv" href="#saglik"><i data-lucide="heart-pulse"></i>Yatırımcı Sağlığı</a>
+<a class="nv" href="#federatif"><i data-lucide="layers"></i>Ortak Kabiliyet</a>
+<a class="nv" href="#dalga"><i data-lucide="trending-up"></i>İkinci Dalga</a>
+<a class="nv" href="#ai"><i data-lucide="brain-circuit"></i>Yapay Zeka</a>
+<div class="grp">İcra</div>
+<a class="nv" href="#katki"><i data-lucide="user-check"></i>Katkım</a>
+<a class="nv" href="#plan100"><i data-lucide="calendar-clock"></i>İlk 100 Gün</a>
+<a class="nv" href="#kpi"><i data-lucide="gauge"></i>Yol Haritası &amp; KPI</a>
+<a class="nv" href="#sonuc"><i data-lucide="flag"></i>Sonuç</a>
+</nav>
+<div id="topnav">
+<a href="#giris">Giriş</a><a href="#ozet">Özet</a><a href="#mimari">Mimari</a><a href="#global">Yurt Dışı</a><a href="#anabahis">Ana Bahis</a><a href="#pazar">Pazara Çıkış</a><a href="#odunc">Pay Ödünç</a><a href="#saglik">Yatırımcı Sağlığı</a><a href="#federatif">Ortak Kabiliyet</a><a href="#dalga">İkinci Dalga</a><a href="#ai">Yapay Zeka</a><a href="#katki">Katkım</a><a href="#plan100">100 Gün</a><a href="#kpi">KPI</a><a href="#sonuc">Sonuç</a>
+</div>
+<main>
+
+<div class="hero" id="giris" data-screen-label="Giriş">
+<div class="glow"></div>
+<img class="hlogo" src="assets/inveo-logo.svg" alt="Inveo">
+<span class="tag" style="align-self:flex-start;margin-bottom:18px">STRATEJİ MEMORANDUMU</span>
+<h1>Inveo 2030 — <em>Bir Sonraki Büyüme Fazı</em></h1>
+<p class="sub">Dijital sermaye piyasaları hizmet platformunu ortak ürün omurgası, yeni gelir motorları ve ölçülen sonuçlarla büyütmek. Yaklaşımım: önce çalışan çekirdeğin ekonomisini görünür kılmak, sonra yeni modüllere ve büyüme opsiyonlarına sermaye ayırmak.</p>
+<div class="meta">
+<div class="m"><div class="k">Hazırlayan</div><div class="v">Volkan Karakoçak</div></div>
+<div class="m"><div class="k">Rol Yaklaşımı</div><div class="v">Ekosistem Ürün ve Büyüme Direktörlüğü — CPO / İş Geliştirme kapsamı</div></div>
+<div class="m"><div class="k">Karar Standardı</div><div class="v">Yatırımcı değeri · birim ekonomi · regülasyon · sahiplik · canlı kanıt</div></div>
+</div>
+<a class="scrolldn" href="#ozet">Keşfetmeye başlayın <i data-lucide="chevron-down"></i></a>
+</div>
+
+<section class="sec" id="ozet" data-screen-label="01 Yönetici Özeti">
+<div class="kicker"><span class="num">01</span><span class="lbl">Yönetici Özeti</span></div>
+<h2>Inveo ekosistemini nasıl okuyorum?</h2>
+<p class="lead">Inveo; yatırımcı erişimi, yatırım ürünleri, saklama ve finansman, işlem teknolojisi, dijital varlıklar, girişim yatırımları ve uluslararası dağıtımı aynı yönetim alanında buluşturuyor — Türkiye'de az rastlanan bir kombinasyon. Sorun adayı, parça eksikliğinden çok, parçaların aynı yatırımcı ve kurum yolculuğunda ne kadar birlikte değer ürettiğidir.</p>
+<div class="grid g4 reveal">
+<div class="stat"><div class="v" data-count="64.7"><span>0</span><small> mlr TL</small></div><div class="l">Anakasa saklama büyüklüğü (2025)</div></div>
+<div class="stat"><div class="v" data-count="79"><span>0</span><small> mlr TL</small></div><div class="l">Platformdan izlenen varlık (2026 Ç1)</div></div>
+<div class="stat"><div class="v" data-count="24"><span>0</span><small> PYŞ</small></div><div class="l">Anakasa sözleşmeli kurum</div></div>
+<div class="stat"><div class="v" data-count="27"><span>0</span><small>%</small></div><div class="l">Kurum sayısı bazında erişim (89 PYŞ içinde)</div></div>
+</div>
+<div class="callout t reveal"><i data-lucide="lightbulb"></i><div><h4>Neden şimdi?</h4><p>Anakasa'nın 24 PYŞ ile sözleşme yapmış olması pazar payı değil; çalışan ürünün ölçeklenebilirliğine ilişkin başlangıç göstergesidir. Yetki ve hizmet tanımı mevcut olduğuna göre ilk iş, boşluğun ürün, operasyon, sözleşme, kanal veya satış paketinin hangisinde olduğunu netleştirmektir.</p></div></div>
+<h3 style="font-size:18px;margin:32px 0 14px">Öncelik sıram</h3>
+<div class="tblwrap reveal"><table class="tbl">
+<thead><tr><th>Sıra</th><th>Yönetim bahsi</th><th>Zaman</th><th>Somut karar</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Dijital Sermaye Piyasaları Hizmet Platformu — Anakasa çekirdeği</td><td><span class="tag">0–12 ay</span></td><td>Modül, hedef yatırımcı, birim ekonomi ve sahiplik</td></tr>
+<tr><td>2</td><td>Erken gelir motorları — otomatik pay ödünç ve atıl nakit</td><td><span class="tag">0–6 ay</span></td><td>Simülasyon, kontrollü pilot ve devam kararı</td></tr>
+<tr><td>3</td><td>Yatırımcı sağlığı ve hedef bazlı yatırım ilişkisi</td><td><span class="tag">0–18 ay</span></td><td>Tek tüzel kişilikte kanıt, sonra izinli genişleme</td></tr>
+<tr><td>4</td><td>Hazine, execution/risk ve dijital saklama</td><td><span class="tag a">6–18 ay</span></td><td>İç veri ve sponsor oluşunca ikinci dalga</td></tr>
+<tr><td>Ops.</td><td>TÜRİB, RWA, Finveo dağıtımı ve stratejik yatırımlar</td><td><span class="tag g">12–36 ay</span></td><td>Pazar erişimi ve birim ekonomi doğrulanınca</td></tr>
+</tbody></table></div>
+<div class="src"><i data-lucide="book-marked"></i>Kaynak: A1–A5, I1. Kamu verisi ile içeriden edinilen görüş ayrı değerlendirilmiştir.</div>
+</section>
+
+<section class="sec" id="mimari" data-screen-label="02 Stratejik Mimari">
+<div class="kicker"><span class="num">02</span><span class="lbl">Ekosistemin Stratejik Mimarisi</span></div>
+<h2>4 motor, 1 hizmet orkestrasyonu</h2>
+<div class="grid g2 reveal" style="margin-top:24px">
+<div class="card"><div class="ic"><i data-lucide="users"></i></div><h3>Yatırımcı ve dağıtım</h3><p><b style="color:var(--txt)">Gedik · Marbaş · Finveo</b><br>Yatırımcı edinimi, danışmanlık, execution ve uluslararası erişim</p></div>
+<div class="card"><div class="ic"><i data-lucide="factory"></i></div><h3>Ürün fabrikası</h3><p><b style="color:var(--txt)">Inveo Portföy · GYF · GSYF</b><br>Likit ve alternatif yatırım ürünleri</p></div>
+<div class="card"><div class="ic"><i data-lucide="server"></i></div><h3>Altyapı ve bilanço</h3><p><b style="color:var(--txt)">Misyon Bank · Anakasa · MisyonTech · GYT</b><br>Saklama, fon operasyonu, finansman, API ve işlem teknolojisi</p></div>
+<div class="card"><div class="ic"><i data-lucide="rocket"></i></div><h3>Yeni raylar</h3><p><b style="color:var(--txt)">Inveo Kripto · Taurus · Ichain · Ventures</b><br>Dijital varlık, RWA, yeni teknoloji ve büyüme opsiyonları</p></div>
+</div>
+<div class="card reveal" style="margin-top:14px;border-color:rgba(0,85,255,.35);background:linear-gradient(135deg,rgba(0,85,255,.04),var(--card))"><div class="ic"><i data-lucide="git-merge"></i></div><h3>Hizmet orkestrasyonu</h3><p>Holding sponsorluğu ve ürün portföy yönetimi — doğru ihtiyacı doğru lisanslı şirkete, sürece ve ürüne bağlamak.</p></div>
+<h3 style="font-size:18px;margin:32px 0 14px">3 değer akışı</h3>
+<div class="grid g3 reveal">
+<div class="card"><div class="ic"><i data-lucide="briefcase"></i></div><h3>PYŞ yolculuğu</h3><p>Saklama, fon operasyonu, bireysel yatırımcı kanalı, bankacılık, raporlama ve API hizmetlerinin tek sözleşme ve hizmet planında yönetilmesi.</p></div>
+<div class="card"><div class="ic"><i data-lucide="building-2"></i></div><h3>Girişimci / ihraççı yolculuğu</h3><p>İhtiyaç analizi, kurumsal finansman, fon veya ihraç yapısı, doküman akışı, saklama, dağıtım ve yatırımcı erişiminin lisanslı şirketler üzerinden orkestrasyonu.</p></div>
+<div class="card"><div class="ic"><i data-lucide="wallet"></i></div><h3>Yatırımcı yolculuğu</h3><p>Gedik veya Marbaş üzerinden işlem, fon, portföy yönetimi, atıl nakit, ödünç gelir, finansman ve dijital varlık ihtiyaçlarının tutarlı bir deneyimde birleştirilmesi.</p></div>
+</div>
+<div class="callout reveal"><i data-lucide="quote"></i><div><h4>Stratejik okuma</h4><p>Misyon Bank "One-Stop Shop" yönünü zaten tanımlamış durumda. Fırsat, bu yaklaşımı slogan seviyesinden çıkarıp hedef segment, modül kataloğu, servis seviyesi, satış modeli ve ürün P&amp;L'i bulunan bir hizmet platformuna dönüştürmektir.</p></div></div>
+<div class="src"><i data-lucide="book-marked"></i>Kaynak: A1–A3, A12, I1.</div>
+</section>
+
+<section class="sec" id="global" data-screen-label="03 Yurt Dışı Karşılaştırması">
+<div class="kicker"><span class="num">03</span><span class="lbl">Yurt Dışı Karşılaştırması</span></div>
+<h2>Çalışan modellerden alınacak 3 ders</h2>
+<p class="lead">Türkiye tasarımına başlamadan önce çalışan modelleri incelemek gerekir: birlikte ürünleştirilen kabiliyetler, korunan kurumsal sınırlar ve gelirin üretildiği noktalar.</p>
+<div class="steps" id="modelTabs">
+<button class="on" data-p="m1">State Street Alpha</button>
+<button data-p="m2">BNP Paribas SS</button>
+<button data-p="m3">Saxo</button>
+</div>
+<div class="step-panel on" id="m1"><div class="card"><div class="ic"><i data-lucide="monitor"></i></div><h3>Front-to-back platform</h3><p>Ön, orta ve arka ofis teknolojisini veri, operasyon ve saklama hizmetleriyle bağlıyor. 2025 sonunda 53,8 trilyon $ saklama/administrasyon, 100'den fazla pazar.</p><div class="callout t" style="margin-top:14px"><i data-lucide="arrow-right"></i><div><h4>Inveo için ders</h4><p>Ortak veri modeli ve uçtan uca iş akışı; tek ekranda görünüm, arkada modüler servisler.</p></div></div></div></div>
+<div class="step-panel" id="m2"><div class="card"><div class="ic"><i data-lucide="handshake"></i></div><h3>Entegre hizmet modeli</h3><p>Fon operasyonu, saklama, regülasyon, raporlama, finansman ve portalı birlikte sunuyor. 16,7 trilyon $ saklama, 3,7 trilyon $ administrasyon, 10.626 fon.</p><div class="callout t" style="margin-top:14px"><i data-lucide="arrow-right"></i><div><h4>Inveo için ders</h4><p>Tek temas noktası ve yönetilen hizmet; yerel mevzuat sorumluluğu uzman ekiplerde kalıyor.</p></div></div></div></div>
+<div class="step-panel" id="m3"><div class="card"><div class="ic"><i data-lucide="plug"></i></div><h3>White-label + OpenAPI</h3><p>Bankalara, brokerlara ve wealth şirketlerine white-label, OpenAPI, execution, saklama ve yatırımcı yolculuğu sağlıyor.</p><div class="callout t" style="margin-top:14px"><i data-lucide="arrow-right"></i><div><h4>Inveo için ders</h4><p>Kurum yatırımcısını ve markasını korurken ortak altyapıdan ölçek üretmek.</p></div></div></div></div>
+<h3 style="font-size:18px;margin:30px 0 10px">Türkiye için tasarım ilkeleri</h3>
+<div class="card reveal">
+<div class="li"><i data-lucide="door-open"></i>Tek yatırımcı kapısı; ancak hizmeti veren lisanslı tüzel kişilik açık biçimde görünür.</div>
+<div class="li"><i data-lucide="shield-check"></i>Ortak veri ve iş akışı; erişim amaç, izin ve tüzel kişilik sınırlarıyla yönetilir.</div>
+<div class="li"><i data-lucide="calculator"></i>Modüler fiyatlama: temel platform + kullanılan hizmet + işlem / saklama katkısı.</div>
+<div class="li"><i data-lucide="user-round"></i>Tek temas noktası; arka planda ürün sahibi ve uzman servis ekipleri.</div>
+<div class="li"><i data-lucide="feather"></i>Ağır küresel yapılar kopyalanmaz; Türkiye'deki PYŞ, aracı kurum ve yatırım bankası düzenine uygun yalın bir model kurulur.</div>
+</div>
+<div class="callout t reveal"><i data-lucide="puzzle"></i><div><h4>Inveo'nun yapısal avantajı</h4><p>Bu üç modelin Türkiye karşılığı için gerekli banka, aracı kurum, PYŞ, teknoloji, saklama ve dağıtım parçaları zaten aynı ekosistemde bulunuyor.</p></div></div>
+<div class="src"><i data-lucide="book-marked"></i>Kaynak: A6–A8. Hizmet tanımları ve ölçek referansları resmi kurum sayfaları ile 2025 yıl sonu sonuçlarından alınmıştır.</div>
+</section>
+
+<section class="sec" id="anabahis" data-screen-label="04 Ana Bahis">
+<div class="kicker"><span class="num">04</span><span class="lbl">Ana Bahis</span></div>
+<h2>Dijital Sermaye Piyasaları Hizmet Platformu</h2>
+<p class="lead">İlk 12 ayın ana yatırımı: Anakasa'yı Misyon Bank'ın saklama ve bankacılık yetkileri, MisyonTech/GYT teknolojisi ve grup dağıtımıyla birlikte modüler bir hizmet platformuna dönüştürmek. Anakasa, bu mimarinin yatırımcı ve kurum temas noktasıdır.</p>
+<div id="modAcc" class="reveal">
+<div class="acc-item"><div class="acc-hd"><span class="tag">Modül</span><span class="t">Kolektif saklama ve fon operasyonu</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in"><b>İhtiyaç:</b> Fonların saklama, değerleme, rapor, mutabakat ve istisna süreçleri.<br><b>Etki:</b> Saklama ve operasyon geliri; yüksek süreç bağlılığı.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">Modül</span><span class="t">Bireysel saklama</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in"><b>İhtiyaç:</b> PYŞ yatırımcılarının portföy görünümü ve saklama sürecinin ürünleşmesi.<br><b>Etki:</b> Hesap, varlık ve platform geliri; PYŞ için tamamlayıcı hizmet.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">Modül</span><span class="t">PYŞ–fon entegrasyonu</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in"><b>İhtiyaç:</b> OTC/batch, emir, veri ve rapor akışındaki manuel temas.<br><b>Etki:</b> Modül geliri, daha yüksek STP ve düşük birim maliyet.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">Modül</span><span class="t">Markalı mobil / web</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in"><b>İhtiyaç:</b> Küçük ve orta PYŞ'nin dijital kanal yatırımı.<br><b>Etki:</b> Kurum başına modül sayısı ve yatırımcı bağlılığı.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">Modül</span><span class="t">Bankacılık ve ödeme</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in"><b>İhtiyaç:</b> Nakit, transfer, finansman ve yatırım işlemlerinin ayrışması.<br><b>Etki:</b> B2B2C gelir ve daha yüksek kullanım sıklığı.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">Modül</span><span class="t">Yönetilen hizmetler</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in"><b>İhtiyaç:</b> Başvuru, doküman, mevzuat, operasyon ve uzman koordinasyonu.<br><b>Etki:</b> Hizmet ücreti, dönüşüm ve yeni yatırımcı edinimi.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">Modül</span><span class="t">Kurumsal API ve raporlama</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in"><b>İhtiyaç:</b> Her kurum için entegrasyonun yeniden yapılması.<br><b>Etki:</b> API / işlem geliri ve daha kısa entegrasyon süresi.</div></div></div>
+</div>
+<div class="callout reveal"><i data-lucide="search-check"></i><div><h4>Bireysel saklama: ilk doğrulama</h4><p>Kamuya açık sunumlarda bireysel saklama hizmeti ve yetkiler yer alıyor; içeriden görüş ise PYŞ müşterileri için tamamlanma seviyesini kritik görüyor. Eksikliği peşinen "lisans yok" diye tanımlamam — ilk 20 günde beş başlığı ayrı ayrı doğrularım: ürün kapsamı, sözleşme, operasyon, teknoloji/kanal ve satış paketi. Yatırım kararı gerçek boşluğa göre verilir.</p></div></div>
+<div class="formula reveal"><b>Birim Ekonomi</b>Yıllık katkı = kurum aboneliği + kullanılan modüller + saklama/operasyon katkısı + API/işlem geliri + yönetilen hizmet ücreti − entegrasyon, destek, altyapı ve uyum maliyeti. İlk karar kapıları: kurum bazında brüt katkı, entegrasyon geri ödeme süresi, ikinci modül kullanımı, STP artışı ve müşteri kayıp oranı.</div>
+<div class="src"><i data-lucide="book-marked"></i>Kaynak: A2–A5, I1. Bireysel saklama "eksikliği" iç doğrulamaya tabi ürünleşme hipotezi olarak ele alınmıştır.</div>
+</section>
+
+<section class="sec" id="pazar" data-screen-label="05 Pazara Çıkış">
+<div class="kicker"><span class="num">05</span><span class="lbl">Pazara Çıkış ve Yönetilen Hizmetler</span></div>
+<h2>Platformun teknoloji kadar hizmet tasarımı da olmalı</h2>
+<p class="lead">Tek bir portal, müşterinin işini tek başına çözmez. PYŞ, girişimci, ihraççı veya yatırımcı çoğu zaman hangi lisanslı kuruma, hangi dokümanla ve hangi sırayla gitmesi gerektiğini bilmiyor. Platform bu karmaşıklığı görünmez hale getirmeli; hizmetin hukuki sahibi ilgili lisanslı şirket veya uzman partner olmalı.</p>
+<div class="steps" id="jTabs">
+<button class="on" data-p="j1">1 · Giriş</button>
+<button data-p="j2">2 · Çözüm</button>
+<button data-p="j3">3 · Doküman</button>
+<button data-p="j4">4 · Lisanslı hizmet</button>
+<button data-p="j5">5 · Süreklilik</button>
+</div>
+<div class="step-panel on" id="j1"><div class="grid g2"><div class="card"><div class="ic"><i data-lucide="eye"></i></div><h3>Müşterinin gördüğü</h3><p>Tek başvuru, net hizmet menüsü.</p></div><div class="card"><div class="ic a"><i data-lucide="cog"></i></div><h3>Arka plandaki orkestrasyon</h3><p>Segment, uygunluk, ihtiyaç ve yetki kontrolü.</p></div></div></div>
+<div class="step-panel" id="j2"><div class="grid g2"><div class="card"><div class="ic"><i data-lucide="eye"></i></div><h3>Müşterinin gördüğü</h3><p>Önerilen yol ve tahmini takvim.</p></div><div class="card"><div class="ic a"><i data-lucide="cog"></i></div><h3>Arka plandaki orkestrasyon</h3><p>Fon, ihraç, saklama, finansman, danışmanlık veya dağıtım seçimi.</p></div></div></div>
+<div class="step-panel" id="j3"><div class="grid g2"><div class="card"><div class="ic"><i data-lucide="eye"></i></div><h3>Müşterinin gördüğü</h3><p>Tek kontrol listesi ve durum takibi.</p></div><div class="card"><div class="ic a"><i data-lucide="cog"></i></div><h3>Arka plandaki orkestrasyon</h3><p>Hukuk, uyum, operasyon ve dış uzman koordinasyonu.</p></div></div></div>
+<div class="step-panel" id="j4"><div class="grid g2"><div class="card"><div class="ic"><i data-lucide="eye"></i></div><h3>Müşterinin gördüğü</h3><p>Doğru şirketle sözleşme ve işlem.</p></div><div class="card"><div class="ic a"><i data-lucide="cog"></i></div><h3>Arka plandaki orkestrasyon</h3><p>Misyon, Gedik, Marbaş, Inveo Portföy veya yetkili partner.</p></div></div></div>
+<div class="step-panel" id="j5"><div class="grid g2"><div class="card"><div class="ic"><i data-lucide="eye"></i></div><h3>Müşterinin gördüğü</h3><p>Rapor, destek ve yeni ihtiyaç önerisi.</p></div><div class="card"><div class="ic a"><i data-lucide="cog"></i></div><h3>Arka plandaki orkestrasyon</h3><p>Saklama, operasyon, bankacılık, API ve çapraz hizmet.</p></div></div></div>
+<h3 style="font-size:18px;margin:30px 0 10px">Öncelikli müşteri segmentleri</h3>
+<div class="card reveal">
+<div class="li"><i data-lucide="building"></i>Kendi teknoloji ve operasyon yatırımını yapmak istemeyen küçük ve orta PYŞ'ler.</div>
+<div class="li"><i data-lucide="sprout"></i>Yeni fon kuran veya alternatif varlık tarafında büyüyen portföy yönetim şirketleri.</div>
+<div class="li"><i data-lucide="landmark"></i>Sermaye piyasalarına erişmek isteyen girişimciler, ihraççılar ve aile ofisleri.</div>
+<div class="li"><i data-lucide="globe-2"></i>Türkiye ürünlerine veya bölgesel dağıtıma erişmek isteyen yabancı kurumlar.</div>
+</div>
+<div class="callout t reveal"><i data-lucide="package"></i><div><h4>Pazara çıkış modeli</h4><p>İlk ürün kataloğu herkes için geniş bir menü olmamalı. Bir hedef segment seçilir, 3–5 modüllük paket hazırlanır, satış döngüsü ve hizmet maliyeti ölçülür. İlk paket için doğal aday: saklama + fon operasyonu + kurum portalı + bankacılık/ödeme + raporlama.</p></div></div>
+<div class="src"><i data-lucide="book-marked"></i>Kaynak: A1–A3, A7–A8, I1. Yatırım danışmanlığı ve hukuki hizmetler yalnız yetkili tüzel kişi veya uzman partner üzerinden sunulur.</div>
+</section>
+
+<section class="sec" id="odunc" data-screen-label="06 Otomatik Pay Ödünç">
+<div class="kicker"><span class="num">06</span><span class="lbl">Özgün Gelir Motoru</span></div>
+<h2>Otomatik Pay Ödünç</h2>
+<p class="lead">Aracı kurumlarımızın Ödünç Pay Piyasası ve otomatik ödünç verme lisansları hâlihazırda mevcut. Özgün taraf: mevcut piyasa altyapısını, yatırımcının kuralları önceden belirlediği, sistemin talebi izleyip eşik oluştuğunda teklif ürettiği ve gelirin mobilde şeffaf izlendiği <b style="color:var(--txt)">yatırımcı kontrollü bir gelir ürününe</b> dönüştürmek. Kamuya açık taramada bu uçtan uca perakende deneyimin örneği tespit edilmedi.</p>
+<div class="grid g2 reveal" style="grid-template-columns:1fr 1fr;margin-bottom:14px">
+<div class="stat"><div class="v" data-count="224.6"><span>0</span><small> mlr TL</small></div><div class="l">Ödünç pay işlem hacmi — 2025</div></div>
+<div class="stat"><div class="v" data-count="165.6"><span>0</span><small> mlr TL</small></div><div class="l">2026 ilk 5 ay (Takasbank / TSPB)</div></div>
+</div>
+<div class="callout reveal"><i data-lucide="info"></i><div><h4>Pazar ölçeği notu</h4><p>Bu veri ürün geliri tahmini değildir; anlamlı işlem büyüklüğüne sahip mevcut bir piyasada yatırımcı deneyimini ürünleştirme hedefidir. Açığa satışın açık olduğu dönemlerde bu hacimler katlanarak artacaktır.</p></div></div>
+<h3 style="font-size:18px;margin:30px 0 14px">Ürün akışı</h3>
+<div class="flowrow reveal">
+<div class="fstep"><div class="n">ADIM 1</div><h4>Uygun stok</h4><p>Kıymet bazlı izin, azami oran, hariç tutma · serbest bakiye, likidite ve kurumsal aksiyon kontrolü</p></div>
+<div class="fstep"><div class="n">ADIM 2</div><h4>Fiyat ve vade</h4><p>Asgari oran, vadeli/vadesiz tercih · talep derinliği, net getiri ve işlem maliyeti</p></div>
+<div class="fstep"><div class="n">ADIM 3</div><h4>Otomatik teklif</h4><p>Talimatı açma, durdurma, değiştirme · eşik oluştuğunda teklif ve kullanıcıya bildirim</p></div>
+<div class="fstep"><div class="n">ADIM 4</div><h4>Gelir görünümü</h4><p>Brüt/net getiri ve kurum payı · günlük tahakkuk, mutabakat ve raporlama</p></div>
+</div>
+<h3 style="font-size:18px;margin:30px 0 10px">Neden Inveo için anlamlı?</h3>
+<div class="card reveal">
+<div class="li"><i data-lucide="archive"></i>Gedik ve Marbaş, uzun süre elde tutulan pay stokuna ve yatırımcı ilişkisine sahip.</div>
+<div class="li"><i data-lucide="file-check"></i>Gedik'in sözleşme altyapısında ödünç alma/verme zaten var; yeni faaliyet kurmak yerine deneyim ürünleştiriliyor.</div>
+<div class="li"><i data-lucide="workflow"></i>GYT ve MisyonTech; Takasbank/MKK entegrasyonu, talimat, mutabakat ve mobil görünümü tek akışta kurabilir.</div>
+<div class="li"><i data-lucide="scan-search"></i>Yatırımcı analitiği, uygun kıymet ve segmenti belirleyerek kitle lansmanı riskini azaltır.</div>
+</div>
+<div class="formula reveal"><b>Ekonomik Model ve Pilot</b>Kurum geliri = uygun pay stoku × katılım oranı × kullanım/eşleşme oranı × ağırlıklı ödünç oranı × kurum payı − entegrasyon ve işletim maliyeti. İlk 60 günde tarihsel stok ve talep simülasyonu; iş vakası olumluysa yüksek stoklu, düşük devirli gönüllü yatırımcı grubunda sınırlı pilot.</div>
+<div class="src"><i data-lucide="book-marked"></i>Kaynak: A5, A9. Piyasa büyüklüğü TSPB'nin Takasbank kaynaklı verisidir.</div>
+</section>
+
+<section class="sec" id="saglik" data-screen-label="07 Yatırımcı Sağlığı">
+<div class="kicker"><span class="num">07</span><span class="lbl">Erken Ticari Kanıt</span></div>
+<h2>Yatırımcı Sağlığı ve Atıl Nakit</h2>
+<p class="lead">Tam grup ölçeğinde bir yatırımcı veri projesiyle başlamak hem yavaş hem hukuken gereksiz riskli. İlk pilot Gedik içinde, mevcut yatırımcı ve işlem verisiyle yürütülür: kaybedilen AUM'u korumak, temsilci zamanını doğru yatırımcıya ayırmak, atıl nakdi likidite ihtiyacına uygun çözümle değerlendirmek.</p>
+<div class="grid g3 reveal">
+<div class="card"><div class="ic"><i data-lucide="activity"></i></div><h3>Yatırımcı Sağlık Skoru</h3><p>Hacim, para çıkışı, giriş ve temas azalması sinyalleri; gerekçeli temsilci aksiyonu.<br><br><span class="tag">Ölçü: kontrol grubuna göre korunan AUM ve kalıcılık</span></p></div>
+<div class="card"><div class="ic"><i data-lucide="coins"></i></div><h3>Atıl Nakit Verimliliği</h3><p>Bekleyen bakiye, ödeme ihtiyacı ve likidite süresi; uygun fon/nakit çözümü.<br><br><span class="tag">Ölçü: net para girişi, 30/90 gün kalıcılık, şikayet</span></p></div>
+<div class="card"><div class="ic"><i data-lucide="message-square-more"></i></div><h3>Önerilen Aksiyon</h3><p>Hedef, risk kapasitesi ve davranışa göre temas zamanı ve içerik.<br><br><span class="tag">Ölçü: temas verimi, dönüşüm, memnuniyet</span></p></div>
+</div>
+<div class="callout t reveal"><i data-lucide="brain"></i><div><h4>Yapay zeka burada nasıl kullanılır?</h4><p>Model yalnız risk skoru üretmez; hangi sinyalin karara yol açtığını açıklar. Uygunluk ve yatırım kararını belirleyen kurallar deterministik kalır; yapay zeka açıklama, önceliklendirme ve temsilci desteği sağlar.</p></div></div>
+<div class="formula reveal"><b>Ekonomik Model</b>Net katkı = kontrol grubuna göre korunan AUM × yıllık katkı marjı + atıl nakitten oluşan ürün geliri − temsilci, kampanya ve teşvik maliyeti. Pilot; AUM ve kalıcılık artarken şikayet veya uygunsuz öneri yükselmiyorsa ölçeklenir.</div>
+<div class="src"><i data-lucide="book-marked"></i>Kaynak: A14 ve görüşmede edinilen yatırımcı kaybı / atıl nakit ihtiyaçları. İlk kapsam tek tüzel kişiliktir.</div>
+</section>
+
+<section class="sec" id="federatif" data-screen-label="08 Ortak Kabiliyet">
+<div class="kicker"><span class="num">08</span><span class="lbl">Silodan Ortak Kabiliyete</span></div>
+<h2>Federatif ortak kabiliyet modeli</h2>
+<p class="lead">Gedik, Marbaş, Misyon Bank, Inveo Portföy ve teknoloji şirketleri ayrı lisans, risk ve P&amp;L sorumluluğu taşıyor — bu ayrım korunmalı. Buna karşılık aynı kabiliyetin her şirkette yeniden kurulması maliyet, teslim süresi ve kalite kaybı yaratır.</p>
+<div id="capAcc" class="reveal">
+<div class="acc-item"><div class="acc-hd"><span class="tag">01</span><span class="t">Kimlik, izin ve KYC/AML</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in"><b>Sahiplik:</b> Ortak standart; tüzel kişilik bazlı erişim ve karar.<br><b>Ölçüm:</b> Hesap açılış süresi, tekrar veri, uyum hatası.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">02</span><span class="t">Fon, saklama ve muhasebe entegrasyonu</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in"><b>Sahiplik:</b> Platform ürün sahibi + alan sahibi.<br><b>Ölçüm:</b> STP, manuel temas, istisna ve kapanış süresi.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">03</span><span class="t">Risk ve execution servisleri</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in"><b>Sahiplik:</b> Ortak motor; kurum bazlı limit ve fiyatlama.<br><b>Ölçüm:</b> Gecikme, hata, slippage ve tekrar kullanım.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">04</span><span class="t">Veri ürünleri ve yapay zeka</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in"><b>Sahiplik:</b> Veri sözleşmesi, model sahibi ve denetim izi.<br><b>Ölçüm:</b> Veri kalitesi, model sapması, iş sonucu.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">05</span><span class="t">Test, log ve gözlemlenebilirlik</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in"><b>Sahiplik:</b> Ortak araç seti; ekiplerin kendi teslim sorumluluğu.<br><b>Ölçüm:</b> Sürüm süresi, hata kaçağı ve MTTR.</div></div></div>
+</div>
+<div class="callout reveal"><i data-lucide="list-checks"></i><div><h4>Her ortak kabiliyet için 6 zorunlu unsur</h4><p>Ürün sahibi · alan sahibi · servis kataloğu · SLA · veri sözleşmesi · maliyet-fayda modeli. Bunlar tanımlanmadığında ortak yapı merkezi teknoloji kuyruğuna dönüşür; tanımlandığında iştiraklerin hızını artıran bir platform olur.</p></div></div>
+<h3 style="font-size:18px;margin:30px 0 14px">Ürün Portföy ve Program Ofisi</h3>
+<div class="grid g3 reveal">
+<div class="card"><div class="ic"><i data-lucide="crown"></i></div><h3>Holding sponsoru</h3><p>Öncelik ve iştirakler arası kaynak çatışması.<br><br><span class="tag g">İlk çeyrek aylık, sonra çeyreklik</span></p></div>
+<div class="card"><div class="ic"><i data-lucide="users-round"></i></div><h3>Ürün Portföy ve Program Ekibi (4–6 kişi)</h3><p>Keşif, iş vakası, portföy, bağımlılık ve sonuç.<br><br><span class="tag g">Haftalık icra, aylık karar</span></p></div>
+<div class="card"><div class="ic"><i data-lucide="git-branch"></i></div><h3>İştirak program ekipleri</h3><p>Ürün, teknoloji, operasyon, hukuk ve risk kapasitesi.<br><br><span class="tag g">Program bazlı teslim</span></p></div>
+</div>
+<div class="src"><i data-lucide="book-marked"></i>Kaynak: A1–A3, A14. Önerilen yapı, merkezi organizasyon yerine federatif ürün işletim modeline dayanır.</div>
+</section>
+
+<section class="sec" id="dalga" data-screen-label="09 İkinci Dalga">
+<div class="kicker"><span class="num">09</span><span class="lbl">İkinci Dalga ve Büyüme Opsiyonları</span></div>
+<h2>Kanıttan sonra ölçeklenecek alanlar</h2>
+<div class="grid g2 reveal" style="margin-top:24px">
+<div class="card"><div class="ic"><i data-lucide="crosshair"></i></div><h3>Hedef bazlı varlık yönetimi</h3><p><span class="tag a">Koşul: yatırımcı sağlığı kanıtı ve izin modeli</span><br><br>Hedef, risk, fon, kredi, kripto ve insan danışmanı aynı yolculukta. <i>Deneyim: dealer, BPY, fon ve yatırım ürünleri.</i></p></div>
+<div class="card"><div class="ic"><i data-lucide="line-chart"></i></div><h3>Hazine karar desteği</h3><p><span class="tag a">Koşul: iç veri, kullanıcı sponsorluğu, ölçülebilir fırsat</span><br><br>Faiz eğrisi, fonlama, teminat ve göreli değer desteği. <i>Deneyim: Akbank faiz arbitrajı ürünü.</i></p></div>
+<div class="card"><div class="ic"><i data-lucide="shield"></i></div><h3>Ortak execution / risk</h3><p><span class="tag a">Koşul: Gedik–Marbaş rol ayrımı ve iş vakası</span><br><br>Algo, yönlendirme, limit, piyasa yapıcılığı ve analiz servisleri. <i>Deneyim: OMS, DMA, FIX, ITCH/OUCH, SPAN, algo/MM.</i></p></div>
+<div class="card"><div class="ic"><i data-lucide="link"></i></div><h3>Dijital saklama ve RWA</h3><p><span class="tag a">Koşul: nihai izin, kurumsal talep ve hukuk modeli</span><br><br>Çoklu varlık saklama ve kontrollü RWA. <i>Deneyim: kripto, saklama ve tokenizasyon.</i></p></div>
+<div class="card" style="grid-column:1/-1"><div class="ic"><i data-lucide="plane"></i></div><h3>Finveo dağıtımı</h3><p><span class="tag a">Koşul: yerel lisans, ürün uyumu ve birim ekonomi</span> — Platform ve yatırım ürünlerinin sınır ötesi dağıtımı. <i>Deneyim: 25+ piyasa ve uluslararası entegrasyon.</i></p></div>
+</div>
+<div class="callout t reveal"><i data-lucide="wheat"></i><div><h4>TÜRİB tarafında kanıtlanmış avantaj</h4><p>TÜRİB'in trade katmanını ve 7 ÜPAK'a hizmet veren uçtan uca yapıyı inşa ettim. İlk 100 günde geliştirme başlatmam; ÜPAK ortaklığı/dağıtım modeli, saklama rolü ve ELÜS teminatlı finansman ekonomisini doğrularım. İş Yatırım'ın ELÜS Market ortaklığına benzer bir modelle işlem tarafında, Misyon markasıyla saklama tarafında pozisyon alınabilir.</p></div></div>
+<div class="callout reveal"><i data-lucide="scale"></i><div><h4>Sermaye disiplini</h4><p>RWA, izinli DeFi, TÜRİB veya stratejik satın alma; yalnız ekosistem anlatısına uyduğu için yatırım alamaz. Finansal getiri, düzenleyici yol, isimlendirilmiş yatırımcı ve 90 günlük grup pilotu bulunmalıdır.</p></div></div>
+<div class="src"><i data-lucide="book-marked"></i>Kaynak: A10–A13, A15. TÜRİB ve Finveo önerileri aşamalı yatırım kararına bağlanmıştır.</div>
+</section>
+
+<section class="sec" id="ai" data-screen-label="10 Yapay Zeka">
+<div class="kicker"><span class="num">10</span><span class="lbl">Yapay Zeka ve İcra Kalitesi</span></div>
+<h2>İlk yıl için 3 ölçülebilir kullanım</h2>
+<div class="grid g3 reveal" style="margin-top:24px">
+<div class="card"><div class="ic"><i data-lucide="heart-pulse"></i></div><h3>Yatırımcı sağlığı ve aksiyon</h3><p>Gedik içinde tek segment.<br><br><span class="tag">Sonuç: korunan AUM ve temsilci verimi</span></p></div>
+<div class="card"><div class="ic"><i data-lucide="test-tube"></i></div><h3>Yapay zeka destekli test</h3><p>İki kritik yatırımcı veya işlem akışı.<br><br><span class="tag">Sonuç: test süresi, hata kaçağı, sürüm kalitesi</span></p></div>
+<div class="card"><div class="ic"><i data-lucide="bot"></i></div><h3>Operasyon ve istisna asistanı</h3><p>PYŞ–fon/saklama sürecinde bir istisna akışı.<br><br><span class="tag">Sonuç: manuel temas ve kapanış süresi</span></p></div>
+</div>
+<div class="card reveal" style="margin-top:14px">
+<div class="li"><i data-lucide="lock"></i>Üretim yatırımcı verisi; özel ortam, erişim kontrolü ve model risk onayı olmadan dış araca açılmaz.</div>
+<div class="li"><i data-lucide="ruler"></i>Limit, ücret, uygunluk ve muhasebe kuralları deterministik ve test edilebilir kalır.</div>
+<div class="li"><i data-lucide="user-cog"></i>Her yapay zeka ürününün iş sahibi, model sahibi, veri izni ve kapatma eşiği bulunur.</div>
+<div class="li"><i data-lucide="bar-chart-3"></i>Başarı; gelir, kalite, süre ve risk etkisiyle ölçülür. İlk 3 kullanım değer kanıtlamadan daha geniş programa geçilmez.</div>
+</div>
+<div class="callout reveal"><i data-lucide="graduation-cap"></i><div><h4>İnsan sermayesi: İK ile ortaklık</h4><p>Personel gelişim kartları ve Infina Akademi tecrübem, ürün ve teknoloji yetkinliklerinin geliştirilmesinde kullanılabilir. Performans, ücret ve terfi İK'nın sahipliğinde kalır; katkım ürün yetkinlik sözlüğü, gerçek proje havuzu, mentor ağı ve genç yeteneğin doğru ekosistem şirketine yerleştirilmesidir.</p></div></div>
+<div class="src"><i data-lucide="book-marked"></i>Kaynak: A1–A2 ve kişisel uygulama deneyimleri.</div>
+</section>
+
+<section class="sec" id="katki" data-screen-label="11 Katkım">
+<div class="kicker"><span class="num">11</span><span class="lbl">Sağlayabileceğim Katkı</span></div>
+<h2>Konuştuğum alanların benzerlerini daha önce ürettim</h2>
+<div class="tblwrap reveal" style="margin-top:20px"><table class="tbl">
+<thead><tr><th>Inveo ihtiyacı</th><th>Deneyimim</th><th>Doğrudan katkım</th></tr></thead>
+<tbody>
+<tr><td>Platform ve entegrasyon</td><td>OMS, PYŞ–fon transfer/emir, OTC/batch, banka ve uluslararası piyasa bağlantıları</td><td>Anakasa, entegrasyon platformu ve ortak kabiliyetler</td></tr>
+<tr><td>Saklama ve fon operasyonu</td><td>PYŞ ve fon iş akışları, rapor, mutabakat ve operasyon tasarımı</td><td>Bireysel/kolektif saklama ürünleşmesi ve yönetilen hizmet</td></tr>
+<tr><td>Yatırımcı ve varlık yönetimi</td><td>3 yıl dealer ve bireysel portföy danışmanlığı; fon ve yatırım ürünleri</td><td>Yatırımcı sağlığı, atıl nakit ve hedef bazlı ilişki</td></tr>
+<tr><td>Atıl varlık geliri</td><td>Otomatik pay ödünç uygulama analizi</td><td>Özgün gelir motoru, simülasyon ve kontrollü pilot</td></tr>
+<tr><td>Piyasalar ve risk</td><td>DMA, FIX, ITCH/OUCH, SPAN, pre-trade risk, algo, MM ve arbitraj</td><td>Ortak execution/risk ürünleri</td></tr>
+<tr><td>Hazine</td><td>Akbank faiz arbitrajı ve opsiyon piyasa yapıcılığı ürün sorumluluğu</td><td>Hazine karar destek sistemi</td></tr>
+<tr><td>Tarım piyasaları</td><td>TÜRİB trade katmanı ve yedi ÜPAK sistemi</td><td>Pazara giriş ve altyapı fizibilitesi</td></tr>
+<tr><td>Yetenek</td><td>Personel gelişim kartları ve Infina Akademi kurucu deneyimi</td><td>İK ortaklığında yetkinlik ve akademi modeli</td></tr>
+</tbody></table></div>
+<h3 style="font-size:18px;margin:30px 0 10px">Ürün liderliği yaklaşımım</h3>
+<div class="card reveal">
+<div class="li"><i data-lucide="compass"></i>Müşteri/yatırımcı problemini ve birim ekonomiyi çıkarır, teknoloji tercihine bundan sonra karar veririm.</div>
+<div class="li"><i data-lucide="map"></i>Yol haritasını değişen müşteri ve iş sonucuna göre yönetirim; özellik sayısı ikincil göstergedir.</div>
+<div class="li"><i data-lucide="users"></i>Keşif, iş vakası ve teslimi aynı ekipte tutar; her çeyrekte varsayım kapatırım.</div>
+<div class="li"><i data-lucide="link-2"></i>İştirakler arası bağımlılığı net sahiplik, SLA, kapasite taahhüdü ve ortak KPI ile yönetirim.</div>
+<div class="li"><i data-lucide="octagon-x"></i>İş vakası oluşmayan fikri zamanında durdurmayı doğru sermaye tahsisinin parçası sayarım.</div>
+</div>
+<div class="callout t reveal"><i data-lucide="badge-check"></i><div><h4>Rolün doğru kapsamı</h4><p>Ekosistem Ürün ve Büyüme Direktörü: stratejik iradeyi ürün portföyüne, iş vakasına, isimlendirilmiş ekiplere ve ölçülen teslimata çeviren yöneticidir. İştiraklerin düzenleyici kararlarına müdahale etmez; ortak fırsatların sahipliğini ve icra kalitesini yönetir.</p></div></div>
+</section>
+
+<section class="sec" id="plan100" data-screen-label="12 İlk 100 Gün">
+<div class="kicker"><span class="num">12</span><span class="lbl">İlk 100 Günlük Aksiyon Planı</span></div>
+<h2>1 canlı kanıt, 2 doğrulanmış iş vakası</h2>
+<p class="lead">Çok sayıda regüle paydaşın bulunduğu bir yapıda ilk 100 günde bütün platformu kurmak gerçekçi değil; yalnız analiz üretmek de yeterli değil. Hedef: 1 canlı süreç kanıtı, 2 ölçülmüş iş vakası ve yönetimce onaylanmış 12 aylık plan.</p>
+<div class="steps" id="pTabs">
+<button class="on" data-p="p1">0–20 gün</button>
+<button data-p="p2">21–45 gün</button>
+<button data-p="p3">46–70 gün</button>
+<button data-p="p4">71–100 gün</button>
+</div>
+<div class="step-panel on" id="p1"><div class="card"><div class="ic"><i data-lucide="clipboard-list"></i></div><h3>Envanter ve doğrulama</h3><p>Şirket, ürün, lisans, veri, P&amp;L ve yatırımcı akış envanteri; bireysel saklama boşluğunun doğrulanması; 10–15 iç paydaş ve 5–8 hedef kurumla görüşmeler (entegrasyon süresi, manuel operasyon, dijital kanal/raporlama maliyeti, bireysel saklama talebi, ödeme isteği).</p><div class="callout t" style="margin-top:14px"><i data-lucide="check-circle"></i><div><h4>Somut çıktı</h4><p>Gerçek durum haritası; sorun sıklığı × ekonomik etki × ödeme isteği × uygulanabilirlik matrisi; isimlendirilmiş sponsorlar.</p></div></div></div></div>
+<div class="step-panel" id="p2"><div class="card"><div class="ic"><i data-lucide="drafting-compass"></i></div><h3>Hedef model ve birim ekonomi</h3><p>State Street / BNP / Saxo karşılaştırması; hedef hizmet mimarisi; hukuk/uyum haritası; platform ve pay ödünç birim ekonomisi.</p><div class="callout t" style="margin-top:14px"><i data-lucide="check-circle"></i><div><h4>Somut çıktı</h4><p>Hedef model, ürün kataloğu, talep kanıtı ve karar eşikleri.</p></div></div></div></div>
+<div class="step-panel" id="p3"><div class="card"><div class="ic"><i data-lucide="flask-conical"></i></div><h3>Minimum canlı kapsam</h3><p>Bir PYŞ–fon/saklama akışında minimum canlı kapsam; yatırımcı sağlığı gölge modeli; pay ödünç tarihsel simülasyonu.</p><div class="callout t" style="margin-top:14px"><i data-lucide="check-circle"></i><div><h4>Somut çıktı</h4><p>Pilot tasarımı, bütçe, entegrasyon planı ve devam/durdurma ölçütü.</p></div></div></div></div>
+<div class="step-panel" id="p4"><div class="card"><div class="ic"><i data-lucide="zap"></i></div><h3>Canlı kanıt ve karar</h3><p>Seçilen entegrasyon akışında canlı kanıt; yatırımcı sağlığı kontrollü test; pay ödünç için koşullu pilot kararı.</p><div class="callout t" style="margin-top:14px"><i data-lucide="check-circle"></i><div><h4>Somut çıktı</h4><p>En az iki ölçülen etki, bir net erteleme/durdurma kararı ve finanse edilmiş 12 aylık yol haritası.</p></div></div></div></div>
+<div class="callout reveal"><i data-lucide="alert-triangle"></i><div><h4>Kritik yol</h4><p>Bu planın kritik yolu teknoloji hızından çok holding sponsorluğu ile hukuk, uyum ve iştirak kararlarının zamanında alınmasıdır. Canlı geçiş, onayların 45. güne kadar tamamlanmasına bağlıdır; onay uzarsa simülasyon, iş vakası, tasarım ve entegrasyon testi tamamlanır — programın diğer çıktıları gecikmez.</p></div></div>
+<h3 style="font-size:18px;margin:30px 0 10px">İlk 100 günde yapmayacağım işler</h3>
+<div class="card reveal">
+<div class="li x"><i data-lucide="x"></i>Hazine karar desteğini canlıya veya gölge pilota almak.</div>
+<div class="li x"><i data-lucide="x"></i>TÜRİB, RWA veya izinli DeFi için geliştirme başlatmak.</div>
+<div class="li x"><i data-lucide="x"></i>Grup çapında tek yatırımcı veri havuzu kurmak.</div>
+<div class="li x"><i data-lucide="x"></i>Bütün şirketleri aynı anda yeni operating modele geçirmek.</div>
+<div class="li x"><i data-lucide="x"></i>Kurum genelindeki performans ve yetkinlik sistemini sahiplenmek.</div>
+</div>
+<div class="callout t reveal"><i data-lucide="trophy"></i><div><h4>100. gün başarı standardı</h4><p>Bir canlı süreç kanıtı · iki ekonomik/yatırımcı doğrulaması · en az bir devam etmeme kararı · isimlendirilmiş ekipler · yönetimce finanse edilmiş 12 aylık ürün planı.</p></div></div>
+</section>
+
+<section class="sec" id="kpi" data-screen-label="13 Yol Haritası ve KPI">
+<div class="kicker"><span class="num">13</span><span class="lbl">Yol Haritası ve Başarı Göstergeleri</span></div>
+<h2>Kısa, orta ve uzun vadeli hedefler</h2>
+<div class="grid g3 reveal" style="margin-top:24px">
+<div class="card"><span class="tag">0–6 ay</span><h3 style="margin-top:12px">Ekonomiyi doğrula</h3><p>Hedef mimari, canlı entegrasyon kanıtı, yatırımcı sağlığı sonucu, pay ödünç kararı.</p></div>
+<div class="card"><span class="tag a">6–18 ay</span><h3 style="margin-top:12px">Tekrarlayan gelire çevir</h3><p>Bireysel/kolektif saklama paketleri, anakasa modülleri, yönetilen hizmetler, hedef bazlı yatırım ilişkisi.</p></div>
+<div class="card"><span class="tag g">18–36 ay</span><h3 style="margin-top:12px">Bölgesel platform geliri</h3><p>Kurumsal API; Finveo üzerinden yabancı kurumsal yatırımcı, aile ofisi, girişimci ve ihraççı erişimi; dijital saklama/RWA ve seçilmiş TÜRİB modeli.</p></div>
+</div>
+<h3 style="font-size:18px;margin:30px 0 14px">KPI seti — 9 alan</h3>
+<div id="kpiAcc" class="reveal">
+<div class="acc-item"><div class="acc-hd"><span class="tag">Platform</span><span class="t">Aktif kurum ve tekrarlayan gelir</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in">Aktif kurum, kurum başına modül, entegrasyon süresi, STP, tekrarlayan gelir, kurum bazında brüt katkı.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">Saklama</span><span class="t">Saklama ve operasyon</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in">Saklanan varlık, aktif hesap/kurum, manuel temas, istisna, kapanış süresi, birim maliyet.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">Hizmet</span><span class="t">Yönetilen hizmet</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in">Nitelikli talep, dönüşüm, hizmete başlama süresi, dosya başına gelir, tekrar kullanım ve memnuniyet.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">Ödünç</span><span class="t">Pay ödünç</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in">Uygun stok, katılım, kullanım/eşleşme, yatırımcı ve kurum geliri, geri çağırma SLA, şikayet.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">Yatırımcı</span><span class="t">Müşteri / yatırımcı</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in">Korunan AUM, net para girişi, 30/90 gün kalıcılık, temas verimi ve uygunluk.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">Kabiliyet</span><span class="t">Ortak kabiliyet</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in">Tekrar kullanım oranı, entegrasyon tamamlanma süresi, SLA, sürüm süresi, hata kaçağı ve maliyet/işlem.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">Ekosistem</span><span class="t">Sinerji katkısı</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in">Yönlendirilmiş AUM, çapraz ürün kullanımı, grup dışı platform geliri ve ölçülen sinerji katkısı.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">Global</span><span class="t">Uluslararası büyüme</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in">Nitelikli yabancı fırsat, dönüşen kurum, yurt dışı kaynaklı AUM/saklama, tekrarlayan platform geliri, sınır ötesi hizmet vakası ve yargı alanı bazında uyum maliyeti.</div></div></div>
+<div class="acc-item"><div class="acc-hd"><span class="tag">İnsan</span><span class="t">Yetenek ve üretkenlik</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in">Yetkinlik açığı kapanışı, iç yerleşim, gerçek proje çıktısı ve üretkenliğe geçiş süresi.</div></div></div>
+</div>
+<div class="callout reveal"><i data-lucide="target"></i><div><h4>Sayısal hedef yaklaşımı</h4><p>Dışarıdan güvenilir olmayan yüzdeler vermek yerine ilk 30 günde baz değerler çıkarılır; 45. günde yönetimle birlikte 6 ve 12 aylık hedefler kilitlenir. Her hedefin sahibi, veri kaynağı, raporlama ritmi ve devam/durdurma eşiği bulunur.</p></div></div>
+</section>
+
+<section class="sec" id="sonuc" data-screen-label="14 Sonuç">
+<div class="kicker"><span class="num">14</span><span class="lbl">Sonuç</span></div>
+<h2>Inveo'da yaratmak istediğim değer</h2>
+<p class="lead">Inveo'nun stratejik yönü doğru ve parçaları güçlü. Önceliğim, kamuya açık "One-Stop Shop" hedefini tamamlanmış ürün modüllerine, açık bir pazara çıkış modeline, tekrarlayan gelire ve çalışan bir icra ritmine çevirmek.</p>
+<div class="grid g2 reveal">
+<div class="card"><div class="ic"><i data-lucide="calendar-range"></i></div><h3>İlk 12 ay</h3><p>Anakasa merkezli Dijital Sermaye Piyasaları Hizmet Platformunu ölçeklerim. Otomatik Pay Ödünç önerisini özgün ve ölçülebilir bir gelir motoru olarak doğrularım.</p></div>
+<div class="card"><div class="ic"><i data-lucide="shield-check"></i></div><h3>Kanıt ve sorumluluk</h3><p>Yatırımcı sağlığı ve atıl nakit tarafında kısa sürede ticari kanıt üretirim. Ortak kabiliyet modelini kurarken iştiraklerin lisans, risk ve P&amp;L sorumluluğunu korurum.</p></div>
+</div>
+<div class="callout t reveal"><i data-lucide="message-circle"></i><div><h4>Kapanış mesajı</h4><p>15 yıllık sermaye piyasaları yazılım ve ürün yönetimi deneyimim ile 3 yıllık aracı kurum tecrübem aynı noktada birleşiyor: teknolojiyi, ürünü, operasyonu ve geliri tek değer zinciri içinde yönetmek. İlk yüz günün sonunda bu yaklaşımı canlı kanıt ve yönetimce finanse edilmiş ürün planıyla göstermeyi hedefliyorum.</p></div></div>
+<h3 style="font-size:18px;margin:30px 0 14px">Görüşme sonrası talep edilen kapsam</h3>
+<div class="tblwrap reveal"><table class="tbl">
+<thead><tr><th>Talep edilen başlık</th><th>Memorandumdaki karşılığı</th></tr></thead>
+<tbody>
+<tr><td>Inveo ekosistemine ilişkin genel değerlendirme</td><td><a href="#ozet">Bölüm 1–3</a></td></tr>
+<tr><td>Ekosisteme sağlayabileceğim katkılar</td><td><a href="#federatif">Bölüm 8, 10 ve 11</a></td></tr>
+<tr><td>Göreve başlarsam önceliklendireceğim konular</td><td><a href="#anabahis">Bölüm 4–10</a></td></tr>
+<tr><td>İlk 100 günlük aksiyon planı</td><td><a href="#plan100">Bölüm 12</a></td></tr>
+<tr><td>Kısa, orta ve uzun vadeli hedefler</td><td><a href="#kpi">Bölüm 13</a></td></tr>
+<tr><td>Beklenen çıktılar ve başarı göstergeleri</td><td><a href="#plan100">Bölüm 12–13</a></td></tr>
+</tbody></table></div>
+<div class="acc-item reveal" style="margin-top:24px"><div class="acc-hd"><span class="tag g">A1–A15 · I1</span><span class="t">Seçilmiş kaynaklar</span><span class="chev"><i data-lucide="chevron-down"></i></span></div><div class="acc-bd"><div class="acc-bd-in">
+<b>A1</b> Inveo Yatırım Holding 2024 Faaliyet Raporu ve 2025 Ç2 yatırımcı sunumu · <b>A2</b> Misyon Yatırım Bankası 31 Mart 2026 Kurumsal Sunumu · <b>A3</b> Misyon Bank SSS ve Yetki Belgeleri · <b>A4</b> Gedik Yatırım 31 Mart 2026 Faaliyet Raporu · <b>A5</b> TSPB Haziran 2026 bülteni · <b>A6</b> State Street Alpha ürün sayfaları ve 2025 sonuçları · <b>A7</b> BNP Paribas Securities Services sayfaları ve 2025 verileri · <b>A8</b> Saxo kurumsal/white-label ve OpenAPI sayfaları · <b>A9</b> Takasbank ÖPP Uygulama Esasları; Gedik yatırımcı sözleşmesi · <b>A10</b> SPK Kripto Varlık Hizmet Sağlayıcıları listesi · <b>A11</b> TÜRİB 2025 Faaliyet Raporu · <b>A12</b> Misyon Bank ve Gedik yönetim sayfaları · <b>A13</b> FINMA yetkili varlık yöneticileri listesi · <b>A14</b> BDDK sır niteliğindeki bilgiler düzenlemeleri ve KVKK kararları · <b>A15</b> KAP, Inveo Portföy GYF ve GSYF bilgi sayfaları · <b>I1</b> Daha önce Inveo bünyesinde çalışan yönetici görüşmesi.
+</div></div></div>
+<footer><img src="assets/inveo-logo.svg" alt="Inveo"><br>Inveo 2030 — Strateji Memorandumu · Volkan Karakoçak · Temmuz 2026</footer>
+</section>
+
+</main>
+<script>
+lucide.createIcons();
+const pbar=document.getElementById('pbar');
+addEventListener('scroll',()=>{const h=document.documentElement;pbar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+// scrollspy
+const secs=[...document.querySelectorAll('section.sec,.hero')];
+const navLinks=[...document.querySelectorAll('nav#side a.nv, #topnav a')];
+const spy=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;navLinks.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));}})},{rootMargin:'-40% 0px -55% 0px'});
+secs.forEach(s=>spy.observe(s));
+// reveal
+const rev=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rev.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>rev.observe(el));
+// counters
+const fmt=(n,dec)=>n.toLocaleString('tr-TR',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+const cnt=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;cnt.unobserve(e.target);const el=e.target,target=parseFloat(el.dataset.count),dec=(el.dataset.count.split('.')[1]||'').length,sp=el.querySelector('span'),t0=performance.now();const step=t=>{const p=Math.min((t-t0)/1200,1),ease=1-Math.pow(1-p,3);sp.textContent=fmt(target*ease,dec);if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)})},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>cnt.observe(el));
+// accordions
+document.querySelectorAll('.acc-hd').forEach(hd=>{hd.addEventListener('click',()=>{const it=hd.parentElement,bd=it.querySelector('.acc-bd'),open=it.classList.contains('open');it.classList.toggle('open');bd.style.maxHeight=open?'0':bd.scrollHeight+'px'})});
+// step tabs
+document.querySelectorAll('.steps').forEach(grp=>{const btns=[...grp.querySelectorAll('button')];btns.forEach(b=>b.addEventListener('click',()=>{btns.forEach(x=>x.classList.remove('on'));b.classList.add('on');btns.forEach(x=>{const p=document.getElementById(x.dataset.p);if(p)p.classList.toggle('on',x===b)})}))});
+</script>
+</body>
+</html>
